@@ -1,1 +1,1 @@
-This is currently a trial run at setting up html pages with the UMR schema elements/examples. Eventually, the content will move to the UMR4NLP github.
+This is currently a single page showing mappings from spatial PropBank rolesets to ISO-space and Jerry Hobbs's Axiomitizations.
