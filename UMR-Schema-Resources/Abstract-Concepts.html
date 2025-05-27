@@ -822,9 +822,19 @@
         <span class="highlight"><code>:quant</code></span><br>
         <span class="highlight"><code>:direction</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition" rowspan="">For spatial relations, if spatial relation rolesets don't exist.
+        <span class="exsent"> The plane crash occurred 50 miles east of Moscow.
+          <span class="popup">(c / crash-01
+    :ARG1 (p / plane)
+    :place (r / relative-position
+        :op1 (h / human-settlement :wiki "Moscow"
+            :name (n / name :op1 "Moscow"))
+        :quant (d / distance-quantity
+            :quant 50
+            :unit (m / mile))
+        :direction (e / east))
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
