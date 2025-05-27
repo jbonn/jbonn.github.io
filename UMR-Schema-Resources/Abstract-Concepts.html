@@ -305,8 +305,17 @@
         <span class="highlight"></span>
       </td>
       <td class="definition" rowspan="">Concept takes the place of the unknown argument in WH questions.
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+        <span class="exsent"> <strong>Who</strong> put the cookie in the cookie jar?
+          <span class="popup">(p / put-01
+    :mode interrogative
+    :ARG0 <strong>(u / umr-unknown)</strong>
+    :ARG1 (c / cookie)
+    :ARG2 (j / jar
+        :purpose (c2 / cookie  
+            :refer-number plural))
+    :aspect performance
+    :modal-strength neutral-affirmative)
+          </span></span>
       </td>
     </tr>
     
@@ -318,6 +327,16 @@
         <span class="highlight"><code>:polarity-of</code></span>
       </td>
       <td class="definition">Used for 'whether' or 'if' phrases when they are used to indicate that the truth value of a proposition is not known.
+        <span class="exsent"> The man doesn't know <strong>whether</strong> it's raining.
+          <span class="popup">(k / know-01
+    :ARG0 (m / man)
+    :ARG1 <strong>(t / truth-value
+        :polarity-of (r / rain-01
+            :aspect activity
+            :modal-strength undefined))</strong>
+    :aspect state
+    :modal-strength neutral-negative)
+          </span></span>
       </td>
     </tr>
     
@@ -328,7 +347,19 @@
       <td class="nowrap">
         <span class="highlight"><code>:op1</code></span> ... <span class="highlight"><code>:opX</code></span>
       </td>
-      <td class="definition">Used for 'whether' or 'if' phrases when they are used to indicate that the truth value of a proposition is not known.
+      <td class="definition">Used for questions in which a choice is being offered. (Very similar to exclusive-disjunction, but use this for questions.)
+        <span class="exsent"> <strong>Would you like coffee or tea?</strong>
+          <span class="popup">(l / like-02
+    :mode interrogative
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 <strong>(u / umr-choice
+        :op1 (c / coffee)
+        :op2 (t / tea))</strong>
+    :aspect state
+    :modal-strength neutral-affirmative)
+          </span></span>
       </td>
     </tr>
     
@@ -351,6 +382,9 @@
         <span class="highlight"><code></code></span>
       </td>
       <td class="definition">Used if there is no understandable text in a sentence, preventing annotation.
+        <span class="exsent"><strong>&&sssffsd**</strong>
+          <span class="popup">(u / umr-unintelligible)
+          </span></span>
       </td>
     </tr>
   </tbody>
@@ -529,9 +563,27 @@
       <td>
         <span class="highlight"><code>:value</code></span>
       </td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">Use for strings that represent sounds or references to text or words themselves (rather than references to the meanings of the text or words).
+        <span class="exsent">Now take the orange blocks and build a <strong>=</strong>.
+          <span class="popup">(a / and
+    :op1 (t / take-01
+        :mode imperative
+        :ARG0 (p / person
+            :refer-person 2nd
+            :refer-number singular)
+        :ARG1 (b / block
+            :refer-number plural
+            :color (o / orange))
+        :aspect performance
+        :modal-strength partial-affirmative)
+    :op2 (b2 / build-01
+        :mode imperative
+        :ARG0 p
+        :ARG1 <strong>(t / thing
+            :configuration (s / string-entity :value "="))</strong>
+        :ARG2 b
+        :aspect performance
+        :modal-strength partial-affirmative))</span></span>
       </td>
     </tr>
     
@@ -545,9 +597,29 @@
         <span class="highlight"><code>:range-start</code></span><br>
         <span class="highlight"><code>:range-trajectory</code></span>
       </td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For ordinals.
+        <span class="exsent">the <strong>last</strong> man standing 
+          <span class="popup">(m / man
+    :actor-of (s / stand-01
+        <strong>:ord (o / ordinal-entity :value "-1")</strong>
+        :aspect state
+        :modal-strength full-affirmative))</span></span>
+        
+        <span class="exsent">the <strong>first</strong> book <strong>in the stack</strong> 
+          <span class="popup">(b / book
+    <strong>:ord (o / ordinal-entity :value "1")</strong>
+        :range (s / stack))</span></span>
+            
+        <span class="exsent">the <strong>3rd</strong> block <strong>from the lefthand side</strong> 
+          <span class="popup">(b / block
+    <strong>:ord (o / ordinal-entity :value "3")</strong>
+        :range-start (s / side
+            :ARG2-of (l / left-24)))</span></span>
+            
+        <span class="exsent">the <strong>2nd</strong> chair <strong>toward the front</strong>
+          <span class="popup">(c / chair
+    <strong>:ord (o / ordinal-entity :value "2")</strong>
+        :range-trajectory (f / front-03))</span></span>
       </td>
     </tr>
     
@@ -558,9 +630,9 @@
       <td>
         <span class="highlight"><code>:value</code></span>
       </td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For URLs.
+        <span class="exsent"> <strong>https://umr4nlp.github.io/web/</strong>
+          <span class="popup">(u / url-entity :value "https://umr4nlp.github.io/web/")</span></span>
       </td>
     </tr>
     
@@ -571,9 +643,9 @@
       <td>
         <span class="highlight"><code>:value</code></span>
       </td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For percentages
+        <span class="exsent"> <strong>40%</strong>
+          <span class="popup">(p / percentage-entity :value 40)</span></span>
       </td>
     </tr>
     
@@ -584,9 +656,9 @@
       <td>
         <span class="highlight"><code>:value</code></span>
       </td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For phone numbers.
+        <span class="exsent"><strong>555-867-5309</strong>
+          <span class="popup">(p / phone-number-entity :value "555-867-5309")</span></span>
       </td>
     </tr>
     
@@ -597,9 +669,9 @@
       <td>
         <span class="highlight"><code>:value</code></span>
       </td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For email addresses.
+        <span class="exsent"> <strong>John.Doe@gmail.com</strong>
+          <span class="popup">(e / email-address-entity :value "John.Doe@gmail.com")</span></span>
       </td>
     </tr>
     
@@ -611,8 +683,17 @@
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
       <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+        <span class="exsent"> We lost <strong>1-10</strong>. 
+          <span class="popup">(l / lose-03
+    :ARG0 (p / person
+        :refer-person 1st
+        :refer-number plural)
+    :extent <strong>(s / score-entity
+        :op1 1
+        :op2 10)</strong>
+    :aspect performance
+    :modal-strength full-affirmative)
+          </span></span>
       </td>
     </tr>
        
@@ -625,8 +706,21 @@
         <span class="highlight"><code>:op2</code></span>
       </td>
       <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+        <span class="exsent">I will be away June 9-13. 
+          <span class="popup">(a / away-01
+    :ARG1 (p / person
+        :refer-person 1st
+        :refer-number singular)
+    :temporal (d / date-interval
+        :op1 (d2 / date-entity
+            :month 6
+            :day 9)
+        :op2 (d3 / date-entity
+            :month 6
+            :day 13))
+    :aspect state
+    :modal-strength full-affirmative)
+          </span></span>
       </td>
     </tr>
        
@@ -638,9 +732,22 @@
         <span class="highlight"><code>:op1</code></span><br>
         <span class="highlight"><code>:op2</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">Refers to all parts within an interval.
+        <span class="exsent">Please read pages <strong>320-325</strong>.
+          <span class="popup">(r / read-01
+    :mode imperative
+    :polite +
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number plural)
+    :ARG1 (p2 / page
+        :refer-number plural
+        :mod <strong>(v / value-interval
+            :op1 320
+            :op2 325))</strong>
+    :aspect performance
+    :modal-strength partial-affirmative)
+          </span></span>
       </td>
     </tr>
        
@@ -651,9 +758,13 @@
       <td rowspan="">
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For ranges, where some number in the interval holds, but not all numbers.
+        <span class="exsent"> <strong>between four and five thousand boys</strong>
+          <span class="popup">(b / boy
+    :quant (b2 / between
+        :op1 4000
+        :op2 5000))
+          </span></span>
       </td>
     </tr>
        
@@ -665,9 +776,25 @@
         <span class="highlight"><code>:op1</code></span><br>
         <span class="highlight"><code>:op2</code></span>
       </td>
-      <td class="definition">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For slashes that indicate alternation.
+        <span class="exsent"> <strong>terrorist/political</strong> instability in oil-producing countries
+          <span class="popup">(s / slash
+    :op1 (s2 / stable-02
+        :polarity -
+        :cause (t / terrorism-03)
+        :aspect state
+        :modal-strength full-affirmative)
+    :op2 (s3 / stable-02
+        :polarity -
+        :cause (p / politics)
+        :aspect state
+        :modal-strength full-affirmative)
+    :place (c9 / country
+        :refer-number plural
+        :ARG0-of (p5 / produce-01
+            :ARG1 (o4 / oil)
+            :aspect habitual
+            :modal-strength full-affirmative)))</span></span>
       </td>
     </tr>
        
@@ -678,9 +805,11 @@
       <td rowspan="">
         <span class="highlight"><code>:value</code></span>
       </td>
-      <td class="definition">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">For emoticons
+        <span class="exsent"> very <strong>:)</strong>
+          <span class="popup">(h / have-degree-91
+    :ARG3 (v / very)
+        :mod <strong>(e / emoticon :value ":)"))</strong></span></span>
       </td>
     </tr>
        
@@ -708,9 +837,30 @@
         <span class="highlight"><code>:quant</code></span><br>
         <span class="highlight"><code>:orientation</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"> so from there add two <strong>90 degrees to what you just made</strong>.
+          <span class="popup">(a / add-02
+    :mode imperative
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 (t / thing
+        :quant 2)
+    :start (t2 / there)
+    :manner (h / have-orientation-91
+        :ARG1 t
+        :ARG2 <strong>(r / relative-orientation
+            :op1 (t3 / thing
+                :ARG1-of (m / make-01
+                    :ARG0 p
+                    :temporal (j / just)
+                    :aspect performance
+                    :modal-strength full-affirmative))
+            :quant (a2 / angle-quantity
+                :unit (d / degree)
+                :quant 90)))</strong>
+    :aspect performance
+    :modal-strength partial-affirmative)</span></span>
       </td>
     </tr>
        
@@ -721,9 +871,16 @@
       <td rowspan="">
         <span class="highlight"><code>:op1</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent">The exam will take <strong>less than</strong> 5 minutes.
+          <span class="popup">(t / take-10
+    :ARG0 (e / exam)
+    :ARG1 <strong>(l / less-than
+        :op1 (t2 / temporal-quantity
+            :quant 5
+            :unit (m / minute)))</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -734,9 +891,19 @@
       <td rowspan="">
         <span class="highlight"><code>:op1</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent">Jim retired <strong>more than</strong> five years ago.
+          <span class="popup">(r / retire-01
+    :ARG0 (p / person
+        :name (n / name :op1 "Jim"))
+    :time (b / before
+        :op1 (n / now)
+        <strong>:quant (m / more-than
+            :op1 (t / temporal-quantity
+                :quant 5
+                :unit (y / year))))</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -744,12 +911,16 @@
       <td>
         <span class="highlight"><code><strong>at-least</strong></code>
       </td>
-      <td rowspan="">
+      <td>
         <span class="highlight"><code>:op1</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"> 300 grams <strong>or more</strong> of heroin
+          <span class="popup">(h / heroin
+    :quant <strong>(a / at-least
+        :op1 (m / mass-quantity
+            :quant 300
+            :unit (g / gram))))</strong></span></span>
       </td>
     </tr>
        
@@ -757,12 +928,23 @@
       <td>
         <span class="highlight"><code><strong>at-most</strong></code>
       </td>
-      <td rowspan="">
+      <td>
         <span class="highlight"><code>:op1</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"> Mary planned to spend <strong>up to</strong> $5 on the gift.
+          <span class="popup">(p / plan-01
+    :ARG0 (p / person
+        :name (n / name :op1 "Mary"))
+    :ARG1 (s / spend-01
+        :ARG0 p
+        :ARG1 (g / gift)
+        :ARG3 <strong>(a / at-most
+            :op1 (m / monetary-quantity
+                :quant 5
+                :unit (d / dollar))))</strong>
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -774,8 +956,22 @@
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
       <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+        <span class="exsent">Patrick Makau finished running the marathon in <strong>2 hours, 3 minutes and 38 seconds.</strong>
+          <span class="popup">(r / run-02
+    :ARG0 (p / person
+        :wiki "Patrick_Makau_Musyoki"
+        :name (n / name :op1 "Patrick" :op2 "Makau"))
+    :ARG1 (m / marathon)
+    :duration <strong>(s2 / sum-of
+        :op1 (t2 / temporal-quantity
+            :quant 2
+            :unit (h / hour))
+        :op2 (t3 / temporal-quantity
+            :quant 3
+            :unit (m2 / minute))
+        :op3 (t4 / temporal-quantity
+            :quant 38
+            :unit (s3 / second))))</strong></span></span>
       </td>
     </tr>
        
@@ -786,9 +982,15 @@
       <td rowspan="">
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent">The aircraft's velocity reached <strong>three times</strong> the speed of sound. 
+          <span class="popup">(r / reach-01
+    :ARG0 (v / velocity
+        :possessor (a / aircraft))
+    :ARG1 <strong>(p / product-of
+        :op1 3
+        :op2 (s / speed
+            :possessor (s2 / sound))</strong>))</span></span>
       </td>
     </tr>
        
@@ -799,9 +1001,19 @@
       <td rowspan="">
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent">The ratio of boys to girls in the class is <strong>3:2</strong>.
+          <span class="popup">(i / identity-91
+    :ARG1 <strong>(r / ratio-of
+        :op1 (q / quantity
+            :quant-of (b / boy
+                :place (c / class)))
+        :op2 (q / quantity
+            :quant-of (g / girl
+                :place c)))</strong>
+    :ARG2 "3/2"
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -812,9 +1024,15 @@
       <td rowspan="">
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"> <strong>Seven minus two is five.</strong>
+          <span class="popup">(i / identity-91
+    :ARG1 <strong>(d / difference-of
+        :op1 7
+        :op2 2)</strong>
+    :ARG2 5
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -822,12 +1040,18 @@
       <td>
         <span class="highlight"><code><strong>quotient-of</strong></code>
       </td>
-      <td rowspan="">
+      <td>
         <span class="highlight"><code>:op1</code></span>... <span class="highlight"><code>:opX</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"> <strong>12 divided by 3 equals 4. </strong>
+          <span class="popup">(i / identity-91
+    :ARG1 <strong>(q / quotient-of
+        :op1 12
+        :op2 3)</strong>
+    :ARG2 4
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -840,8 +1064,14 @@
         <span class="highlight"><code>:op2</code></span>
       </td>
       <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+        <span class="exsent"><strong>2^3 = 8</strong>
+          <span class="popup">(e / equal-01
+    :ARG1 <strong>(p / power-of
+        :op1 2
+        :op2 3)</strong>
+    :ARG2 8
+    :aspect state
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
        
@@ -853,9 +1083,11 @@
         <span class="highlight"><code>:op1</code></span><br>
         <span class="highlight"><code>:op2</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"><strong>square root of 25</strong>
+          <span class="popup">(r / root-of
+    :op1 25
+    :op2 2)</span></span>
       </td>
     </tr>
        
@@ -867,9 +1099,14 @@
         <span class="highlight"><code>:op1</code></span><br>
         <span class="highlight"><code>:op2</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span>
+      <td class="definition">
+        <span class="exsent"><strong>The natural logarithm of 7.5 is approximately 2.0149.</strong>
+          <span class="popup">(i / identity-91
+     :ARG1 <strong>(l / logarithm-of
+          :op1 7.5
+          :op2 (m / mathematical-constant-e))</strong>
+     :ARG2 (a / approximately
+          :op1 2.0149))</span></span>
       </td>
     </tr>
   </tbody>
@@ -892,7 +1129,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -917,7 +1154,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -945,7 +1182,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -971,7 +1208,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -997,7 +1234,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1026,7 +1263,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1047,7 +1284,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1069,7 +1306,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1090,7 +1327,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1116,7 +1353,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1137,7 +1374,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1162,7 +1399,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1187,7 +1424,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1209,7 +1446,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1230,7 +1467,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1251,7 +1488,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1272,7 +1509,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1293,7 +1530,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1315,7 +1552,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1337,7 +1574,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1363,7 +1600,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1385,7 +1622,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1407,7 +1644,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1439,7 +1676,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1467,7 +1704,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1491,7 +1728,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1512,7 +1749,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1533,7 +1770,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1564,7 +1801,7 @@
       <td>
         <span class="highlight"><code>:quant</code></span>
       </td>
-      <td class="definition">def
+      <td class="definition">
         <span class="exsent">
           <span class="popup"></span></span>
       </td>
@@ -1601,9 +1838,17 @@
         <span class="highlight"><code>:z</code></span><br>
         <span class="highlight"><code>:framework</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+      <td class="definition">For Cartesian coordinates.
+        <span class="exsent">[Builder puts down a green block at <strong>X:0 Y:1 Z:-3</strong>]
+          <span class="popup">(p / put-down-17
+    :ARG0 (b / builder)
+    :ARG1 (b2 / block
+        :color (g / green))
+    :ARG2 (s / space
+        :place <strong>(c / cartesian-coordinate-entity
+            :x 0
+            :y 1
+            :z -3)))</strong></span></span>
       </td>
     </tr>  
     
@@ -1615,9 +1860,16 @@
         <span class="highlight"><code>:value</code></span><br>
         <span class="highlight"><code>:unit</code></span>
       </td>
-      <td class="definition" rowspan="">
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+      <td class="definition">For references to dimension measurements of objects.
+        <span class="exsent">we're going to build a <strong>3 by</strong> square
+          <span class="popup">(b / build-01
+    :ARG0 (p / person
+        :refer-person 1st
+        :refer-number plural)
+    :ARG1 (s / square
+        <strong>:size (d / dimension-entity :value 3))</strong>
+    :aspect performance
+    :modal-strength full-affirmative)</span></span>
       </td>
     </tr>
     
@@ -1630,9 +1882,44 @@
         <span class="highlight"><code>:rise-axis</code></span><br>
         <span class="highlight"><code>:run-axis</code></span>
       </td>
-      <td class="definition">
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+      <td class="definition">Can be used to document the slope measurements, but also to ground the axes of the diagonal to spatial relations.
+        <span class="exsent">From the red block, make <strong>a diagonal of 3 green going down and to the right.</strong>
+          <span class="popup">(m / make-01
+    :mode imperative
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 (c3 / composite-entity
+        :ARG1-of (d / diagonal-02
+            :ARG3 <strong>(s / slope-quantity
+                :rise-axis (a / axis
+                    :ARG4-of (d2 / down-03
+                        :ARG5 (c / cartesian-framework-91
+                            :ARG1 (b2 / build-space))))
+                :run-axis (a2 / axis
+                    :ARG4-of (r / right-04
+                        :ARG3 (c2 / cartesian-framework-91
+                            :ARG1 p)))))</strong>
+        :consist-of (t2 / thing
+            :color (g / green)
+            :quant 3))
+    :source (b / block
+        :color (r2 / red))
+    :aspect performance
+    :modal-strength partial-affirmative)</span></span><br>
+    
+        <span class="exsent">(from a grounding graph in the Minecraft Corpus)
+          <span class="popup">:configuration (s / stack
+    :ARG1-of (d / diagonal-02
+        :ARG3 (a6 / and
+            :op1 (s2 / slope-quantity
+                :rise-axis y
+                :run-axis x
+                :quant 1)
+            :op2 (s3 / slope-quantity
+                :rise-axis y
+                :run-axis z
+                :quant "-1"))))</span></span>
       </td>
     </tr>
     
@@ -1641,9 +1928,26 @@
         <span class="highlight"><code><strong>composite-entity</strong></code>
       </td>
       <td>-</td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+      <td class="definition">Used as a general concept for block constructions in Minecraft, or other composite entities.
+        <span class="exsent">(from a grounding graph in Minecraft Corpus)
+          <span class="popup">:snt8 <strong>(c7 / composite-entity</strong>
+    :configuration (e / eye)
+    :ARG1-of (c8 / cartesian-framework-91
+        :ARG2 (x5 / x-axis)
+        :ARG3 (y5 / y-axis)
+        :ARG4 (z5 / z-axis)
+        :ARG6 (b / builder)
+        :ARG7 (a / armature
+            :axis-layout right-handed
+            :frame-of-reference-type relative
+            :translation rotated))
+    :ARG1-of (c9 / cartesian-framework-91
+        :ARG2 (x6 / x-axis)
+        :ARG3 (y6 / y-axis)
+        :ARG4 (z6 / z-axis)
+        :ARG7 (a / armature
+            :axis-layout left-handed
+            :frame-of-reference-type intrinsic)))</span></span><br>
       </td>
     </tr>
     
@@ -1653,8 +1957,16 @@
       </td>
       <td>-</td>
       <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+        <span class="exsent">[Builder puts down a green block at <strong>X:0 Y:1 Z:-3</strong>]
+          <span class="popup">(p / put-down-17
+    :ARG0 (b / builder)
+    :ARG1 (b2 / block
+        :color (g / green))
+    :ARG2 <strong>(s / space</strong>
+        :place (c / cartesian-coordinate-entity
+            :x 0
+            :y 1
+            :z -3)))</span></span>
       </td>
     </tr>
     
@@ -1663,9 +1975,23 @@
         <span class="highlight"><code><strong>trajectory</strong></code>
       </td>
       <td>-</td>
-      <td class="definition">def
-        <span class="exsent"> 
-          <span class="popup"></span></span><br>
+      <td class="definition">Abstract concept for paths, directions. Used as a head concept node that spatial rolesets can attach to.
+        <span class="exsent">Now make a 3 block long line <strong>going away from you</strong>
+          <span class="popup">(m / make-01
+    :mode imperative
+    :ARG0 (p / person
+        :refer-person 2nd
+        :refer-number singular)
+    :ARG1 (l / line
+        :ARG1-of (l2 / long-03
+            :ARG2 (d / distance-quantity
+                :unit (b / block)
+                :quant 3))
+        :ARG1-of (g / go-35
+            :direction <strong>(t / trajectory</strong>
+                :ARG3-of (a / away-01
+                    :ARG2 p))))
+    :temporal (n / now))</span></span><br>
       </td>
     </tr>
   </tbody>
